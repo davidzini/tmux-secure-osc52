@@ -21,15 +21,16 @@ This reduces the attack surface from "always vulnerable" to milliseconds, trigge
 
 ## Installation
 
-### 1. The Bash Script (`.osc52.sh`)
+### 1. The Bash Script (`osc52.sh`)
 
-Place the script in your home directory and make it executable:
+Download the `osc52.sh` script from this repository, save it as a hidden file in your home directory, and make it executable:
 
 ```bash
+cp osc52.sh ~/.osc52.sh
 chmod +x ~/.osc52.sh
 ```
 
-*(Ensure the script contains the TTY validation and `sleep` delay to prevent race conditions as provided in this repository).*
+*(Ensure the script contains the TTY validation and `sleep` delay to prevent race conditions).*
 
 ### 2. Tmux Configuration (`.tmux.conf`)
 
