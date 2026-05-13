@@ -2,6 +2,12 @@
 
 A secure, dynamic-passthrough implementation for OSC52 clipboard integration in Tmux over SSH.
 
+## Key Benefits
+
+* **Massive Payload Support:** Reliably copies huge amounts of text across SSH (tested with 27,000+ lines) without buffer truncation or dropped data.
+* **Security-First:** Mitigates pastejacking vulnerabilities by keeping the passthrough gate closed by default.
+* **Race-Condition Safe:** Explicit buffer flushing ensures large payloads are transmitted completely before closing the passthrough.
+
 ## The Problem: Pastejacking Vulnerability
 
 Many Tmux users rely on the `OSC 52` escape sequence to copy text from remote SSH sessions to their local machine's clipboard. To make this work, Tmux requires `set -g allow-passthrough on`. 
