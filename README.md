@@ -45,19 +45,16 @@ Remove any existing global `set -g allow-passthrough on` from your `.tmux.conf` 
 **Crucial:** You must pass `#{pane_tty}` as an argument to the script.
 
 ```tmux
-# Enable standard clipboard features (Do NOT set allow-passthrough globally)
+# Enable standard clipboard features
 set -s set-clipboard on
+
+# Ensure vi mode is active for these bindings
 setw -g mode-keys vi
 
-# --- Keyboard Selection ---
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi Space send-keys -X begin-selection
-
-# Keyboard: Send to script and exit copy mode
+# Keyboard (y): Send to script and exit copy mode
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "~/.osc52.sh #{pane_tty}"
-bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "~/.osc52.sh #{pane_tty}"
 
-# Mouse: Send to script, clear selection highlight, but keep copy mode open
+# Mouse (drag end): Send to script and clear highlight
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe "~/.osc52.sh #{pane_tty}" \; send-keys -X clear-selection
 ```
 
